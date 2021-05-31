@@ -60,11 +60,10 @@ jobs:
         cd build
         cmake -G Ninja -DOPENSSL_ROOT_DIR=/usr/local/opt/openssl@1.1 ..
         ninja
-        echo "LD_LIBRARY_PATH=$(pwd)/src:${LD_LIBRARY_PATH}" >> $GITHUB_ENV
 
     - name: Run tests
       run: |
-        go test -v
+        go test -v -exec "env LD_LIBRARY_PATH=$(pwd)/lib/GameNetworkingSockets/build/src"
 
   test-windows:
     runs-on: windows-latest
