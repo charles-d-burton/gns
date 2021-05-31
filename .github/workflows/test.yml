@@ -81,14 +81,14 @@ jobs:
         path-type: inherit
 
     - name: Install dependencies
-      run: "msys2do 
-        pacman -S --noconfirm
+      run: "msys -c 
+        'pacman -S --noconfirm
           mingw-w64-x86_64-gcc
           mingw-w64-x86_64-go
           mingw-w64-x86_64-ninja
           mingw-w64-x86_64-openssl
           mingw-w64-x86_64-pkg-config
-          mingw-w64-x86_64-protobuf"
+          mingw-w64-x86_64-protobuf'"
   
     - name: Compile GameNetworkingSockets library
       run: |
