@@ -60,10 +60,11 @@ jobs:
         cd build
         cmake -G Ninja -DOPENSSL_ROOT_DIR=/usr/local/opt/openssl@1.1 ..
         ninja
+        echo "LD_LIBRARY_PATH=$(pwd)/src:${LD_LIBRARY_PATH}" >> $GITHUB_ENV
 
     - name: Run tests
       run: |
-        go test -v -exec "env LD_LIBRARY_PATH=$(pwd)/lib/GameNetworkingSockets/build/src"
+        go test -v
 
   test-windows:
     runs-on: windows-latest
@@ -75,7 +76,7 @@ jobs:
         submodules: true
 
     - name: Install msys2
-      uses: numworks/setup-msys2@v1
+      uses: msys/setup-msys2@v2
       with:
         path-type: inherit
 
