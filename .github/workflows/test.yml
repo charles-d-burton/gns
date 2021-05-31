@@ -81,7 +81,7 @@ jobs:
         path-type: inherit
 
     - name: Install dependencies
-      run: "msys -c 
+      run: "msys2 -c 
         'pacman -S --noconfirm
           mingw-w64-x86_64-gcc
           mingw-w64-x86_64-go
@@ -95,9 +95,9 @@ jobs:
         cd lib/GameNetworkingSockets
         mkdir build
         cd build
-        msys -c  'cmake -G Ninja ..''
-        msys -c  'ninja'
+        msys2 -c  'cmake -G Ninja ..''
+        msys2 -c  'ninja'
         cp src/libGameNetworkingSockets.dll ../../..
 
     - name: Run tests
-      run: msys -c 'go test -v'
+      run: msys2 -c 'go test -v'
