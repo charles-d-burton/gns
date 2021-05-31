@@ -95,7 +95,7 @@ jobs:
         cd lib/GameNetworkingSockets
         mkdir build
         cd build
-        msys2 -c  'cmake -G Ninja ..''
+        msys2 -c  'cmake -G Ninja ..'
         msys2 -c  'ninja'
         cp src/libGameNetworkingSockets.dll ../../..
 
